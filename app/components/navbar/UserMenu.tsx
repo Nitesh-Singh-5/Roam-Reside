@@ -31,17 +31,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   }, []);
 
   const onRent = useCallback(() => {
-    if (!currentUser) {
-      return loginModal.onOpen();
-    }
-
+    if (!currentUser) return loginModal.onOpen();
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
 
+  const handleBlur = () => setIsOpen(false);
   return (
-    <div className='relative'>
+    <div className='relative' tabIndex={0} onBlur={handleBlur}>
       <div className='flex flex-row items-center gap-3'>
-        <div onClick={onRent} className='hiddenmd:blocktext-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer'>
+        <div onClick={onRent} className='hidden md:blocktext-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer'>
           RoamReside your home
         </div>
         <div
@@ -55,7 +53,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         </div>
       </div>
       {isOpen && (
-        <div className='absolute rounded-xl shadow-mdw-[40vw]md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'>
+        <div className='absolute rounded-xl border shadow-md w-28 bg-white overflow-hidden right-0 top-12 text-sm'>
           <div className='flex flex-col cursor-pointer'>
             {currentUser ? (
               <>

@@ -3,6 +3,7 @@ import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
+import RegisterModal from "./components/modals/RegisterModal";
 
 export const metadata = {
   title: "Roam Reside",
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en'>
       <body className={font.className}>
         <ClientOnly>
+          <RegisterModal />
           <Navbar />
         </ClientOnly>
         <div className='pb-20 pt-28'>{children}</div>
