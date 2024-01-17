@@ -8,8 +8,8 @@ import { BsSnow } from "react-icons/bs";
 import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
 
-// import CategoryBox from "../CategoryBox";
 import Container from "../Container";
+import CategoryBox from "../CategoryBox";
 
 export const categories = [
   {
@@ -102,9 +102,9 @@ const Categories = () => {
   return (
     <Container>
       <div className='pt-4 flex flex-row items-center justify-between overflow-x-auto'>
-        {/* {categories.map((item) => (
+        {categories.map((item) => (
           <CategoryBox key={item.label} label={item.label} icon={item.icon} selected={category === item.label} />
-        ))} */}
+        ))}
       </div>
     </Container>
   );
