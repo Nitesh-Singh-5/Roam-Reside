@@ -21,7 +21,7 @@ const ListingHead: React.FC<ListingHeadProps> = ({ title, locationValue, imageSr
     <>
       <Heading title={title} subtitle={`${location?.region}, ${location?.label}`} />
       <div className='w-full h-[60vh] overflow-hidden rounded-xl relative'>
-        <Image src={imageSrc} fill className='object-cover w-full' alt='Image' />
+        <Image src={imageSrc} fill className='object-cover w-full' alt='Image' placeholder='blur' blurDataURL={imageSrc} />
         <div className='absolute top-5 right-5'>
           <HeartButton listingId={id} currentUser={currentUser} />
         </div>

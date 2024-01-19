@@ -15,10 +15,7 @@ export default async function getListingById(params: IParams) {
         user: true,
       },
     });
-    if (!listing) {
-      return null;
-    }
-
+    if (!listing) return null;
     return {
       ...listing,
       createdAt: listing.createdAt.toString(),

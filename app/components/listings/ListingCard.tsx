@@ -50,13 +50,20 @@ const ListingCard: React.FC<ListingCardProps> = ({ data, reservation, onAction, 
     <div onClick={() => router.push(`/listings/${data.id}`)} className='col-span-1 cursor-pointer group'>
       <div className='flex flex-col gap-2 w-full'>
         <div className='aspect-square w-full relative overflow-hidden rounded-xl'>
-          <Image fill className='object-cover h-full w-full group-hover:scale-110 transition' src={data.imageSrc} alt='Listing' />
+          <Image
+            fill
+            className='object-cover h-full w-full group-hover:scale-110 transition'
+            src={data.imageSrc}
+            alt='Listing'
+            placeholder='blur'
+            blurDataURL={data.imageSrc}
+          />
           <div className='absolute top-3 right-3'>
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
         <div className='font-semibold text-lg'>
-          {location?.region}, {location?.label}
+          {location?.label}, <span className='text-gray-600 text-sm font-medium'>{location?.region}</span>
         </div>
         <div className='font-light text-neutral-500'>{reservationDate || data.category}</div>
         <div className='flex flex-row items-center gap-1'>
