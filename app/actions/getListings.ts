@@ -14,17 +14,9 @@ export interface IListingsParams {
 export default async function getListings(params: IListingsParams) {
   try {
     const { userId, roomCount, guestCount, bathroomCount, locationValue, startDate, endDate, category } = params;
-
     let query: any = {};
-
-    if (userId) {
-      query.userId = userId;
-    }
-
-    if (category) {
-      query.category = category;
-    }
-
+    if (userId) query.userId = userId;
+    if (category) query.category = category;
     if (roomCount) {
       query.roomCount = {
         gte: +roomCount,

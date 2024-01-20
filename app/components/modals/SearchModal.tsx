@@ -6,9 +6,7 @@ import { useCallback, useMemo, useState } from "react";
 import { Range } from "react-date-range";
 import { formatISO } from "date-fns";
 import { useRouter, useSearchParams } from "next/navigation";
-
 import useSearchModal from "@/app/hooks/useSearchModal";
-
 import Modal from "./Modal";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
@@ -55,15 +53,9 @@ const SearchModal = () => {
   }, []);
 
   const onSubmit = useCallback(async () => {
-    if (step !== STEPS.INFO) {
-      return onNext();
-    }
-
+    if (step !== STEPS.INFO) return onNext();
     let currentQuery = {};
-
-    if (params) {
-      currentQuery = qs.parse(params.toString());
-    }
+    if (params) currentQuery = qs.parse(params.toString());
 
     const updatedQuery: any = {
       ...currentQuery,
@@ -73,13 +65,9 @@ const SearchModal = () => {
       bathroomCount,
     };
 
-    if (dateRange.startDate) {
-      updatedQuery.startDate = formatISO(dateRange.startDate);
-    }
+    if (dateRange.startDate) updatedQuery.startDate = formatISO(dateRange.startDate);
 
-    if (dateRange.endDate) {
-      updatedQuery.endDate = formatISO(dateRange.endDate);
-    }
+    if (dateRange.endDate) updatedQuery.endDate = formatISO(dateRange.endDate);
 
     const url = qs.stringifyUrl(
       {
@@ -95,18 +83,12 @@ const SearchModal = () => {
   }, [step, searchModal, location, router, guestCount, roomCount, dateRange, onNext, bathroomCount, params]);
 
   const actionLabel = useMemo(() => {
-    if (step === STEPS.INFO) {
-      return "Search";
-    }
-
+    if (step === STEPS.INFO) return "Search";
     return "Next";
   }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
-    if (step === STEPS.LOCATION) {
-      return undefined;
-    }
-
+    if (step === STEPS.LOCATION) return undefined;
     return "Back";
   }, [step]);
 

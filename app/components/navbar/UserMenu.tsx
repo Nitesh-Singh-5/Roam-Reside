@@ -35,6 +35,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
 
+  const setRoute = (value: string) => {
+    router.push(value);
+    setIsOpen(false);
+  };
+
   const handleBlur = () => setIsOpen(false);
   return (
     <div className='relative' tabIndex={0} onBlur={handleBlur}>
@@ -57,10 +62,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className='flex flex-col cursor-pointer'>
             {currentUser ? (
               <>
-                <MenuItem label='My trips' onClick={() => router.push("/trips")} />
-                <MenuItem label='My favorites' onClick={() => router.push("/favorites")} />
-                <MenuItem label='My reservations' onClick={() => router.push("/reservations")} />
-                <MenuItem label='My properties' onClick={() => router.push("/properties")} />
+                <MenuItem label='My trips' onClick={() => setRoute("/trips")} />
+                <MenuItem label='My favorites' onClick={() => setRoute("/favorites")} />
+                <MenuItem label='My reservations' onClick={() => setRoute("/reservations")} />
+                <MenuItem label='My properties' onClick={() => setRoute("/properties")} />
                 <MenuItem label='Roam Reside your home' onClick={rentModal.onOpen} />
                 <hr />
                 <MenuItem label='Logout' onClick={() => signOut()} />
