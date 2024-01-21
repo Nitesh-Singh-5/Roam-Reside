@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const currentUser = await getCurrentUser();
   return (
     <html lang='en'>
-      <body className={font.className}>
+      <body className={`bg-gray-100 ${font.className}`}>
         <ClientOnly>
           <RegisterModal />
           <LoginModal />
